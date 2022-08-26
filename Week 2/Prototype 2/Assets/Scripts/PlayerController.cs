@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f; // Determines speed of player movement
     public float xRange = 10.0f; // Determines range of bounds
     
+    public GameObject projectilePrefab; // Links palyer object to projectile object
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,13 @@ public class PlayerController : MonoBehaviour
         if (transform.position.x > xRange) // Prevent player frmo leaving on screen right
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        }
+
+        // Projectile Spawning
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // Launch the projectile from the player
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
         }
     }
 }
