@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
-    public float flightSpeed; // Determines speed of food flight
+    public float moveSpeed; // Determines speed of movement
     
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,6 @@ public class MoveForward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * flightSpeed);
+        transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed); // Move forward (along z-axis) with a speed of moveSpeed m/s
     }
 }
