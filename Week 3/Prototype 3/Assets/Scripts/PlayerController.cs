@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce; // How strong is the jump/distance of the jump
     public float gravityModifier; // Allows us to change the value of gravity as we please
     public bool isOnGround = true; // Check if player is on the ground
+    public bool gameOver = false; // Check if player collides with obstacle thus the game is over
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Whenever the player collides with something, in this case the ground, set isOnGround boolean to true
-        isOnGround = true;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            // Whenever the player collides with "Ground" game object, in this case the ground, set isOnGround boolean to true
+            isOnGround = true;
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            // Whenever the player collides with "Obstacle" game object, in this case the ground, set gameOver boolean to true
+            gameOver = true;
+            Debug.Log("Game Over!"); // Print Game Over message
+        }
+        
     }
 }
