@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem explosionParticle; // Holds the explosions fx
     public ParticleSystem dirtParticle; // Holds the dirt splatter fx
 
+    private AudioSource playerAudio; // Holds the AudioSource of the player
+    public AudioClip jumpSound; // Holds the jumping sound clip
+    public AudioClip crashSound; // Holds the crash sound clip
+
     public float jumpForce; // How strong is the jump/distance of the jump
     public float gravityModifier; // Allows us to change the value of gravity as we please
     
@@ -25,6 +29,7 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>(); // Assign playerRb to the object's Rigidbody component
         Physics.gravity *= gravityModifier; // Changes in-game physics to the value we want
         playerAnim = GetComponent<Animator>(); // Assign playerAnim to the object's Animator component
+        playerAudio = GetComponent<AudioSource>(); // Assign playerAudio to the objects's AudioSource component
     }
 
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class PlayerController : MonoBehaviour
             isOnGround = false; // The player is not on the ground while jumping
             playerAnim.SetTrigger("Jump_trig"); // Sets the Jump_trig Animator parameter
             dirtParticle.Stop(); // Don't play the dirt particle when in the air
+            playerAudio.PlayOneShot(jumpSound, 1.0f); // Play jumpSound
         }
 
     }
@@ -60,6 +66,7 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetInteger("DeathType_int", 1); // Set the death animation type to Death_01
             explosionParticle.Play(); // Play the explosion particle system
             dirtParticle.Stop(); // Don't play the dirt particle when dead
+            playerAudio.PlayOneShot(crashSound, 1.0f); // Play crashSound
         }
         
     }
