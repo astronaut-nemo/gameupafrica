@@ -26,5 +26,11 @@ public class Enemy : MonoBehaviour
         
         // Apply force on enemy to follow player
         enemyRb.AddForce(lookDirection * speed);
+
+        // Destroy defeated enemies
+        if(transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }

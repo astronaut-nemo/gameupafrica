@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     // Variables
     private float spawnRange = 9.0f; // Holds the range for spawning
+    public int enemyCount; // Holds the number of enemies
 
     // References
     public GameObject enemyPrefab; // Holds reference to the enemy Prefab
@@ -13,14 +14,28 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Spawning the game object
-        Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation); // Create an instance of the enemy Prefab
+        SpawnEnemyWave(3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        enemyCount = FindObjectsOfType<Enemy>().Length; // Get the number of objects that have the 'Enemy.cs' script attached
+
+        if(enemyCount == 0)
+        {
+            SpawnEnemyWave(1); // Spawn one new enemy when there are no enemies left
+        }
+    }
+
+    // Spawns enemy waves of size 'enemiesToSpawn'
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for (int i = 0; i < enemiesToSpawn; i++)
+        {
+        // Spawning the game object
+        Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation); // Create an instance of the enemy Prefab
+        }
     }
 
     // Generates a random spawn position
