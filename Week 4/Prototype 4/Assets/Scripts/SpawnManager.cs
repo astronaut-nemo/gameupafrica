@@ -7,14 +7,17 @@ public class SpawnManager : MonoBehaviour
     // Variables
     private float spawnRange = 9.0f; // Holds the range for spawning
     public int enemyCount; // Holds the number of enemies
+    public int waveNumber = 1; // Holds the current wave number
 
     // References
     public GameObject enemyPrefab; // Holds reference to the enemy Prefab
+    public GameObject powerupPrefab; // Holds reference to the powerup Prefab
     
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemyWave(3);
+        SpawnEnemyWave(waveNumber); // Spawn first wave
+        SpawnPowerup(); // Spawn first powerup
     }
 
     // Update is called once per frame
@@ -24,7 +27,9 @@ public class SpawnManager : MonoBehaviour
 
         if(enemyCount == 0)
         {
-            SpawnEnemyWave(1); // Spawn one new enemy when there are no enemies left
+            waveNumber++; // Increment the waveNumber
+            SpawnEnemyWave(waveNumber); // Spawn 'waveNumber' amount of new enemies when there are no enemies left
+            SpawnPowerup(); // Spawn powerups with each new enemy wave
         }
     }
 
@@ -36,6 +41,12 @@ public class SpawnManager : MonoBehaviour
         // Spawning the game object
         Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation); // Create an instance of the enemy Prefab
         }
+    }
+
+    // Spawns power ups
+    void SpawnPowerup()
+    {
+        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation); // Create an instance of the powerup Prefab
     }
 
     // Generates a random spawn position
