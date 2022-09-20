@@ -54,7 +54,7 @@ public class SpawnManagerX : MonoBehaviour
             // Spawn enemies in the EnemyX class and reference them with the 'enemy' variable
             EnemyX enemy = Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation).GetComponent<EnemyX>();
             
-            // Increase the speed variable of the enemy objects for the next wave
+            // Increase the speed variable of the enemy objects for the each wave
             enemy.speed *=waveCount;
         }
 
