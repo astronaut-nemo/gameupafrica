@@ -63,14 +63,23 @@ public class Target : MonoBehaviour
     // Destroy object when it is clicked on by the mouse
     private void OnMouseDown()
     {
-        Destroy(gameObject);
-        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation); // Instantiate the explosion particle at the position of the target with the rotation of the particle
-        gameManager.UpdateScore(pointValue); // Change score by amount pointValue everytime an target is clicked on
+        if(gameManager.isGameActive)
+        {
+            Destroy(gameObject);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation); // Instantiate the explosion particle at the position of the target with the rotation of the particle
+            gameManager.UpdateScore(pointValue); // Change score by amount pointValue everytime an target is clicked on
+        }
     }
 
     // Destroy object when it falls onto the sensor i.e. below the screen
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+
+        // If the object is NOT a bad object/is a good object, display the Game Over text
+        if(!gameObject.CompareTag("Bad"))
+        {
+            gameManager.GameOver();
+        }
     }
 }
