@@ -1043,12 +1043,14 @@ MonoBehaviour:
   gameOverText: {fileID: 919200876}
   titleScreen: {fileID: 92482018}
   restartButton: {fileID: 1902351379}
+  timeLeftText: {fileID: 948394900}
   targetPrefabs:
   - {fileID: 5817859361576445215, guid: 9cc97627ed18b449695d703ab651f5cd, type: 3}
   - {fileID: 1996815852551487035, guid: 11bccc60726374a918b5c73120d47ab3, type: 3}
   - {fileID: 5626452297013284046, guid: c5bbabce5ea79419488492993bfdadf0, type: 3}
   - {fileID: 3867821073191959212, guid: 591e0b0a9b4dd4709ad61b99dabf57ef, type: 3}
   isGameActive: 0
+  timeLeft: 0
 --- !u!4 &1128873052
 Transform:
   m_ObjectHideFlags: 0
