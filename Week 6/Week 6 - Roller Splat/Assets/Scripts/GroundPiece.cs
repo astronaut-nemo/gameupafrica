@@ -12,5 +12,7 @@ public class GroundPiece : MonoBehaviour
     {
         GetComponent<MeshRenderer>().material.color = colour; // Change the colour of Mesh Renderer to the specific colour
         isColoured = true; // After the colour is changed, set isColoured to true
+        
+        FindObjectOfType<GameManager>().CheckComplete(); // CHeck if level is complete
     }
 }
