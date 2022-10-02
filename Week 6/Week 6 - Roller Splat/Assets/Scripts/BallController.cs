@@ -17,9 +17,20 @@ public class BallController : MonoBehaviour
     private Vector2 swipePositionCurrentFrame;
     private Vector2 swipePositionLastSwipe;
     private Vector2 currentSwipe;
+    
+    // Background and UI
+    private Color solveColour; // The colour that sets once a tile is solved/moved over
 
     // References
     public Rigidbody ballRb; // Holds reference to the ball's Rigidbody component
+
+
+    // Start() runs once
+    private void Start()
+    {
+        solveColour = Random.ColorHSV(0.5f, 1); // Randomly generate and set a soft light colour to the solveColour
+        GetComponent<MeshRenderer>().material.color = solveColour; // Set the colour of the ball's material to the generated colour
+    }
 
     private void Update()
     {
@@ -44,6 +55,21 @@ public class BallController : MonoBehaviour
         if(isMoving) // If the ball is moving
         {
             ballRb.velocity = speed * travelDirection; // Set ball's velocity to the speed in direction of swipe
+        }
+
+        /* Colour Change on Collisions */
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position - (Vector3.up/2), 0.05f); // Collider array to create sphere under the ball to trigger when the ball is touching the ground
+        int i = 0;
+        while(i < hitColliders.Length)
+        {
+            GroundPiece ground = hitColliders[i].transform.GetComponent<GroundPiece>(); // If the collider hits ground piece, store in the ground object array for that index
+            
+            if(ground && !ground.isColoured) // If ball touches ground and the ground is not coloured
+            {
+                ground.ChangeColour(solveColour); // Change the ground piece colour to the solveColour
+            }
+
+            i++; // Increment the index for next iteration
         }
         
         if(nextCollisionPosition != Vector3.zero) // Check if the ball has hit something
