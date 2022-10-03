@@ -23,7 +23,7 @@ public class BallController : MonoBehaviour
 
     // References
     public Rigidbody ballRb; // Holds reference to the ball's Rigidbody component
-    public ParticleSystem paintParticle; // Holds the paint particle system
+    // public ParticleSystem paintParticle; // Holds the paint particle system
 
 
     // Start() runs once
@@ -54,7 +54,7 @@ public class BallController : MonoBehaviour
         // Check Ball is Moving
         if(isMoving) // If the ball is moving
         {
-            ballRb.velocity = speed * travelDirection; // Set ball's velocity to the speed in direction of swipe   
+            ballRb.velocity = speed * travelDirection; // Set ball's velocity to the speed in direction of swipe 
         }
 
 
