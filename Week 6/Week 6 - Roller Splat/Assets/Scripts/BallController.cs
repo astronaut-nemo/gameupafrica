@@ -23,6 +23,7 @@ public class BallController : MonoBehaviour
 
     // References
     public Rigidbody ballRb; // Holds reference to the ball's Rigidbody component
+    //public ParticleSystem paintParticle; // Holds the paint particle system
 
 
     // Start() runs once
@@ -55,32 +56,11 @@ public class BallController : MonoBehaviour
         if(isMoving) // If the ball is moving
         {
             ballRb.velocity = speed * travelDirection; // Set ball's velocity to the speed in direction of swipe
+            //paintParticle.Play(); // Play the particle effects
         }
 
-        /* Colour Change on Collisions */
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position - (Vector3.up/2), 0.05f); // Collider array to create sphere under the ball to trigger when the ball is touching the ground
-        int i = 0;
-        while(i < hitColliders.Length)
-        {
-            GroundPiece ground = hitColliders[i].transform.GetComponent<GroundPiece>(); // If the collider hits ground piece, store in the ground object array for that index
-            
-            if(ground && !ground.isColoured) // If ball touches ground and the ground is not coloured
-            {
-                ground.ChangeColour(solveColour); // Change the ground piece colour to the solveColour
-            }
+        ColourChange(); // Change the colour of the ground pieces
 
-            i++; // Increment the index for next iteration
-        }
-        
-        if(nextCollisionPosition != Vector3.zero) // Check if the ball has hit something
-        {
-            if(Vector3.Distance(transform.position, nextCollisionPosition) < 1) // Check the distance between the ball's current position and the position of the wall
-            {
-                isMoving = false; // Ball is not in motion
-                travelDirection = Vector3.zero; // Stop the ball from moving
-                nextCollisionPosition = Vector3.zero; // Don't have a new position, so wait for new position from swipe
-            }
-        }
     }
     
     /* Swipe Mechanism */
@@ -146,5 +126,33 @@ public class BallController : MonoBehaviour
         }
 
         isMoving = true; // Ball is in motion
+    }
+
+    /* Colour Change on Collisions */
+    private void ColourChange()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position - (Vector3.up/2), 0.05f); // Collider array to create sphere under the ball to trigger when the ball is touching the ground
+        int i = 0;
+        while(i < hitColliders.Length)
+        {
+            GroundPiece ground = hitColliders[i].transform.GetComponent<GroundPiece>(); // If the collider hits ground piece, store in the ground object array for that index
+            
+            if(ground && !ground.isColoured) // If ball touches ground and the ground is not coloured
+            {
+                ground.ChangeColour(solveColour); // Change the ground piece colour to the solveColour
+            }
+
+            i++; // Increment the index for next iteration
+        }
+        
+        if(nextCollisionPosition != Vector3.zero) // Check if the ball has hit something
+        {
+            if(Vector3.Distance(transform.position, nextCollisionPosition) < 1) // Check the distance between the ball's current position and the position of the wall
+            {
+                isMoving = false; // Ball is not in motion
+                travelDirection = Vector3.zero; // Stop the ball from moving
+                nextCollisionPosition = Vector3.zero; // Don't have a new position, so wait for new position from swipe
+            }
+        }
     }
 }

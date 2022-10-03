@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 2)
+        if(SceneManager.GetActiveScene().buildIndex == 3)
         {
             // Go back to first level if final level complete
             SceneManager.LoadScene(0);
