@@ -23,7 +23,7 @@ public class BallController : MonoBehaviour
 
     // References
     public Rigidbody ballRb; // Holds reference to the ball's Rigidbody component
-    //public ParticleSystem paintParticle; // Holds the paint particle system
+    public ParticleSystem paintParticle; // Holds the paint particle system
 
 
     // Start() runs once
@@ -51,13 +51,12 @@ public class BallController : MonoBehaviour
     /* Ball Movement */
     private void BallMovement()
     {
-         
         // Check Ball is Moving
         if(isMoving) // If the ball is moving
         {
-            ballRb.velocity = speed * travelDirection; // Set ball's velocity to the speed in direction of swipe
-            //paintParticle.Play(); // Play the particle effects
+            ballRb.velocity = speed * travelDirection; // Set ball's velocity to the speed in direction of swipe   
         }
+
 
         ColourChange(); // Change the colour of the ground pieces
 
@@ -126,6 +125,7 @@ public class BallController : MonoBehaviour
         }
 
         isMoving = true; // Ball is in motion
+        
     }
 
     /* Colour Change on Collisions */
