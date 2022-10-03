@@ -23,7 +23,7 @@ public class BallController : MonoBehaviour
 
     // References
     public Rigidbody ballRb; // Holds reference to the ball's Rigidbody component
-    // public ParticleSystem paintParticle; // Holds the paint particle system
+    public ParticleSystem paintParticle; // Holds the paint particle system
 
 
     // Start() runs once
@@ -31,6 +31,7 @@ public class BallController : MonoBehaviour
     {
         solveColour = Random.ColorHSV(0.5f, 1); // Randomly generate and set a soft light colour to the solveColour
         GetComponent<MeshRenderer>().material.color = solveColour; // Set the colour of the ball's material to the generated colour
+        paintParticle.GetComponent<MeshRenderer>().material.color = solveColour;
     }
 
     private void Update()
@@ -54,7 +55,13 @@ public class BallController : MonoBehaviour
         // Check Ball is Moving
         if(isMoving) // If the ball is moving
         {
+            // Debug.Log("FX?");
+            paintParticle.Emit(20); // Emit paint fx while the ball is moving
             ballRb.velocity = speed * travelDirection; // Set ball's velocity to the speed in direction of swipe 
+        }
+        else
+        {
+            
         }
 
 
