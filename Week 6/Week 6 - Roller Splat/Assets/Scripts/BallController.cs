@@ -31,7 +31,6 @@ public class BallController : MonoBehaviour
     {
         solveColour = Random.ColorHSV(0.5f, 1); // Randomly generate and set a soft light colour to the solveColour
         GetComponent<MeshRenderer>().material.color = solveColour; // Set the colour of the ball's material to the generated colour
-        paintParticle.GetComponent<MeshRenderer>().material.color = solveColour;
     }
 
     private void Update()
