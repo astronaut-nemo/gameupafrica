@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* This script allows the player to rotate the toower*/
+
 public class Rotator : MonoBehaviour
 {
     // Variables

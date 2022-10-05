@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* This script controls the behaviour of the player ball */
+
 public class Player : MonoBehaviour
 {
     // Variables
@@ -14,6 +16,6 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         playerRb.velocity = new Vector3(playerRb.velocity.x, bounceForce, playerRb.velocity.z); // Give the player a force to bounce in y-direction
-        
+
     }
 }
