@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Variables
-    public float jumpForce = 12; // Holds multiplier for the jumping force on Player
+    private float jumpForce = 12; // Holds multiplier for the jumping force on Player
     private float gravityMultiplier = 2; // Multiplier to vary gravity
+    private float laneSwitch = 3; // Holds value for switching lanes
 
     public bool isOnGround = true;
 
@@ -28,6 +29,15 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftArrow) && isOnGround)
+        {
+            transform.position = new Vector3(transform.position.x + laneSwitch, transform.position.y, transform.position.z);
+        }
+        else if(Input.GetKeyDown(KeyCode.RightArrow) && isOnGround)
+        {
+            transform.position = new Vector3(transform.position.x - laneSwitch, transform.position.y, transform.position.z);
         }
     }
 
