@@ -25,6 +25,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MovementControl();
+    }
+
+    // Controlling the movement of the Player based on the user input
+    private void MovementControl()
+    {
         // Jumping
         if(SwipeManager.swipeUp && isOnGround)
         {
@@ -45,7 +51,6 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x - laneSwitch, transform.position.y, transform.position.z);
             Debug.Log("Moving right");
         }
-        
     }
 
     // Collisions Checker
@@ -57,4 +62,5 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
         }
     }
+
 }

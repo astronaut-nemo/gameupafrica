@@ -5,8 +5,8 @@ using UnityEngine;
 public class MoveBack : MonoBehaviour
 {
     // Variables
-    public float speed = 5.0f; // Holds the speed of the object
-    public float outofBound = 20.0f; // Holds the limit at which objects are destroyed off screen
+    private float speed = 5.0f; // Holds the speed of the object
+    private float outofBound = 30.0f; // Holds the limit at which objects are destroyed off screen
 
 
     // Start is called before the first frame update
