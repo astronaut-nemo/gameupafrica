@@ -31,14 +31,17 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftArrow) && isOnGround)
+        if(Input.GetKeyDown(KeyCode.LeftArrow) && isOnGround && transform.position.x < laneSwitch)
         {
             transform.position = new Vector3(transform.position.x + laneSwitch, transform.position.y, transform.position.z);
+            Debug.Log("Moving left");
         }
-        else if(Input.GetKeyDown(KeyCode.RightArrow) && isOnGround)
+        else if(Input.GetKeyDown(KeyCode.RightArrow) && isOnGround && transform.position.x > -3)
         {
             transform.position = new Vector3(transform.position.x - laneSwitch, transform.position.y, transform.position.z);
+            Debug.Log("Moving right");
         }
+        Debug.Log(transform.position.x);        
     }
 
     // Collisions Checker
