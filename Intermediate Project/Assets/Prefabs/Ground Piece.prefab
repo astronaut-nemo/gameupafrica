@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2323568850364306346}
   - component: {fileID: -29277248147802157}
+  - component: {fileID: -550516706267863137}
   m_Layer: 0
   m_Name: Ground Piece
   m_TagString: Ground
@@ -50,6 +51,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa74dcef8078c8942960a0af7ca060a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  outofBound: 10
+--- !u!65 &-550516706267863137
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2323568850364306347}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.076645, y: 0.1318345, z: 6.0508027}
+  m_Center: {x: 0.031108856, y: -0.01207757, z: 1.4704783}
 --- !u!1 &2323568850491536970
 GameObject:
   m_ObjectHideFlags: 0
