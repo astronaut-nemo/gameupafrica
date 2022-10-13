@@ -25,19 +25,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If the up Key is pressed and the player is on the ground, make the Player jump by applying a force to its Rb
-        if(Input.GetKeyDown(KeyCode.UpArrow) && isOnGround)
+        // Jumping
+        if(SwipeManager.swipeUp && isOnGround)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftArrow) && isOnGround && transform.position.x < laneBound)
+        // Move left
+        if(SwipeManager.swipeLeft && isOnGround && transform.position.x < laneBound)
         {
             transform.position = new Vector3(transform.position.x + laneSwitch, transform.position.y, transform.position.z);
             Debug.Log("Moving left");
         }
-        if(Input.GetKeyDown(KeyCode.RightArrow) && isOnGround && transform.position.x > -laneBound)
+
+        // Move right
+        if(SwipeManager.swipeRight && isOnGround && transform.position.x > -laneBound)
         {
             transform.position = new Vector3(transform.position.x - laneSwitch, transform.position.y, transform.position.z);
             Debug.Log("Moving right");
