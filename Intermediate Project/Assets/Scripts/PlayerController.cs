@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private float jumpForce = 12; // Holds multiplier for the jumping force on Player
     private float gravityMultiplier = 2; // Multiplier to vary gravity
     private float laneSwitch = 3; // Holds value for switching lanes
+    private float laneBound = 2;
 
     public bool isOnGround = true;
 
@@ -31,17 +32,17 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftArrow) && isOnGround && transform.position.x < laneSwitch)
+        if(Input.GetKeyDown(KeyCode.LeftArrow) && isOnGround && transform.position.x < laneBound)
         {
             transform.position = new Vector3(transform.position.x + laneSwitch, transform.position.y, transform.position.z);
             Debug.Log("Moving left");
         }
-        else if(Input.GetKeyDown(KeyCode.RightArrow) && isOnGround && transform.position.x > -3)
+        if(Input.GetKeyDown(KeyCode.RightArrow) && isOnGround && transform.position.x > -laneBound)
         {
             transform.position = new Vector3(transform.position.x - laneSwitch, transform.position.y, transform.position.z);
             Debug.Log("Moving right");
         }
-        Debug.Log(transform.position.x);        
+        
     }
 
     // Collisions Checker
