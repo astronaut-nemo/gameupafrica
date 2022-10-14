@@ -40,14 +40,14 @@ public class PlayerController : MonoBehaviour
         }
 
         // Move left
-        if(SwipeManager.swipeRight && isOnGround && transform.position.x < laneBound)
+        if(SwipeManager.swipeLeft && isOnGround && transform.position.x < laneBound)
         {
             transform.position = new Vector3(transform.position.x + laneSwitch, transform.position.y, transform.position.z);
             Debug.Log("Moving left");
         }
 
         // Move right
-        if(SwipeManager.swipeLeft && isOnGround && transform.position.x > -laneBound)
+        if(SwipeManager.swipeRight && isOnGround && transform.position.x > -laneBound)
         {
             transform.position = new Vector3(transform.position.x - laneSwitch, transform.position.y, transform.position.z);
             Debug.Log("Moving right");
