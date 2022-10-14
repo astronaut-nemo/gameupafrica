@@ -5,11 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     
-    public GameObject[] groundPiecePrefab; // Array that holds reference to the ground piece Prefab
+    public GameObject[] itemPrefab; // Array that holds reference to the obstacle Prefab
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnGroundPiece", 2.0f, 1.0f);
+        InvokeRepeating("SpawnItem", 3.0f, 3.0f);
     }
 
     // Update is called once per frame
@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour
         
     }
 
-    private void SpawnGroundPiece()
+    private void SpawnItem()
     {
-        int index = Random.Range(0, groundPiecePrefab.Length);
-        Instantiate(groundPiecePrefab[index], groundPiecePrefab[index].transform.position, groundPiecePrefab[index].transform.rotation);
+        int index = Random.Range(0, itemPrefab.Length); // Spawn a random obstacle in the array
+        Instantiate(itemPrefab[index], itemPrefab[index].transform.position, itemPrefab[index].transform.rotation);
     }
 }

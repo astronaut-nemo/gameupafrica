@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Variables
-    private float jumpForce = 12; // Holds multiplier for the jumping force on Player
+    private float jumpForce = 15; // Holds multiplier for the jumping force on Player
     private float gravityMultiplier = 2; // Multiplier to vary gravity
     private float laneSwitch = 3; // Holds value for switching lanes
     private float laneBound = 2;
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         MovementControl();
     }
 
+
     // Controlling the movement of the Player based on the user input
     private void MovementControl()
     {
@@ -39,14 +40,14 @@ public class PlayerController : MonoBehaviour
         }
 
         // Move left
-        if(SwipeManager.swipeLeft && isOnGround && transform.position.x < laneBound)
+        if(SwipeManager.swipeRight && isOnGround && transform.position.x < laneBound)
         {
             transform.position = new Vector3(transform.position.x + laneSwitch, transform.position.y, transform.position.z);
             Debug.Log("Moving left");
         }
 
         // Move right
-        if(SwipeManager.swipeRight && isOnGround && transform.position.x > -laneBound)
+        if(SwipeManager.swipeLeft && isOnGround && transform.position.x > -laneBound)
         {
             transform.position = new Vector3(transform.position.x - laneSwitch, transform.position.y, transform.position.z);
             Debug.Log("Moving right");

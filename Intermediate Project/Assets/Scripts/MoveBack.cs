@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveBack : MonoBehaviour
 {
     // Variables
-    private float speed = 5.0f; // Holds the speed of the object
+    public float speed = 12.0f; // Holds the speed of the object
     private float outofBound = 30.0f; // Holds the limit at which objects are destroyed off screen
 
 
@@ -23,12 +23,12 @@ public class MoveBack : MonoBehaviour
     }
 
     
-    // Destroy objects tagged Ground, Treat or Obstacle once they move out of range
+    // Destroy objects tagged Treat or Obstacle once they move out of range
     private void DestroyOutOfBounds()
     {
         if(transform.position.z < -outofBound)
         {
-            if(gameObject.CompareTag("Ground") || gameObject.CompareTag("Treat") || gameObject.CompareTag("Obstacle"))
+            if(gameObject.CompareTag("Treat") || gameObject.CompareTag("Obstacle"))
             {
                 Destroy(gameObject);
             }
